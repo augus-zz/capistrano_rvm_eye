@@ -1,11 +1,18 @@
 source "http://rubygems.org"
 
 gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'mysql2'
+gem 'activerecord'
 gem 'sidekiq'
+gem 'rake'
 gem 'sidekiq-cron'
 gem 'puma'
 gem 'ably'
 gem 'dotenv'
+gem 'multi_json'
+gem 'oj'
+gem 'redis'
 
 group :development do
   gem 'capistrano'

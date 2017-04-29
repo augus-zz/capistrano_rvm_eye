@@ -169,7 +169,7 @@ workers 2
 # Additional text to display in process listing
 #
 # tag 'app name'
-tag 'CapistranoRvmEeyeDemo'
+tag 'CapistranoRvmEyeDemo'
 #
 # If you do not specify a tag, Puma will infer it. If you do not want Puma
 # to add a tag, use an empty string.

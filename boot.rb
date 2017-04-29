@@ -27,12 +27,18 @@ ENV['RACK_ENV'] = env
 RACK_ENV = env
 puts "Boot from env: #{env}"
 
-require 'sinatra'
-require 'sinatra/base'
-require 'sinatra/activerecord'
 require 'json'
 require "yaml"
 require "erb"
+
+require 'sinatra'
+require 'sinatra/contrib'
+require 'sinatra/namespace'
+require 'sinatra/activerecord'
+
+require 'multi_json'
+require 'oj'
+MultiJson.engine = :oj
 
 config = YAML.load(ERB.new(File.read(File.join('config', 'database.yml'))).result)[RACK_ENV.to_s]
 ActiveRecord::Base.establish_connection(config)
@@ -46,5 +52,7 @@ $setting = YAML.load(ERB.new(File.read(File.join('config', 'setting.yml'))).resu
 ENV["REDIS_HOST"] ||= "localhost"
 ENV["REDIS_PORT"] ||= "6379"
 
-Dir["./lib/*.rb"].sort.each { |f| require f }
-
+ActiveSupport::Dependencies.autoload_paths << APP_ROOT.join("lib")
+ActiveSupport::Dependencies.autoload_paths << APP_ROOT.join("app/controllers")
+ActiveSupport::Dependencies.autoload_paths << APP_ROOT.join("app/models")
+ActiveSupport::Dependencies.autoload_paths << APP_ROOT.join("lib/helpers")
