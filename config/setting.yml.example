@@ -1,0 +1,24 @@
+default: &default
+
+# production specific
+#
+production:
+  <<: *default
+
+#
+# development specific
+#
+development:
+  <<: *default
+
+#
+# staging specific
+#
+staging:
+  <<: *default
+
+#
+# test specific
+#
+test:
+  <<: *default

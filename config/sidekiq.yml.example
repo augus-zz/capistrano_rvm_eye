@@ -1,0 +1,33 @@
+default: &default
+  :require: ./boot_sidekiq.rb
+  :verbose: true
+  :tag: sidekiq
+  :pidfile: ./tmp/pids/sidekiq.pid
+  :logfile: ./log/sidekiq.log
+  :concurrency: 2
+  :queues:
+    - default
+
+#
+# production specific
+#
+production:
+  <<: *default
+
+#
+# development specific
+#
+development:
+  <<: *default
+
+#
+# staging specific
+#
+staging:
+  <<: *default
+
+#
+# test specific
+#
+test:
+  <<: *default

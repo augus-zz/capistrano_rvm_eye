@@ -1,0 +1,4 @@
+cron_job:
+  cron: "*/1 * * * *"
+  class: "CronWorker"
+  queue: "job_queue"

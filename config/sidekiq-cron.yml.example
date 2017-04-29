@@ -1,0 +1,33 @@
+default: &default
+  :require: ./boot_sidekiq.rb
+  :verbose: true
+  :tag: sidekiq-cron
+  :pidfile: ./tmp/pids/sidekiq-cron.pid
+  :logfile: ./log/sidekiq-cron.log
+  :concurrency: 1
+  :queues:
+    - job_queue
+
+#
+# production specific
+#
+production:
+  <<: *default
+
+#
+# development specific
+#
+development:
+  <<: *default
+
+#
+# staging specific
+#
+staging:
+  <<: *default
+
+#
+# test specific
+#
+test:
+  <<: *default

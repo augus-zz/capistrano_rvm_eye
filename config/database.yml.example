@@ -1,0 +1,36 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  reconnect: true
+  database: <%= ENV["MYSQL_DATABASE"] %>
+  pool: 20
+  username: <%= ENV["MYSQL_USERNAME"] %>
+  password: <%= ENV["MYSQL_PASSWORD"] %>
+  host: <%= ENV["MYSQL_HOST"] %>
+  port: <%= ENV["MYSQL_PORT"] %>
+#
+# production specific
+#
+production:
+  <<: *default
+
+#
+# development specific
+#
+development:
+  <<: *default
+
+#
+# staging specific
+#
+staging:
+  <<: *default
+
+#
+# test specific
+#
+test:
+  <<: *default
+  password: "123456"
+  host: "127.0.0.1"
+  port: 3306
