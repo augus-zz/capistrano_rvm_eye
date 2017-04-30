@@ -4,3 +4,4 @@ tmp/*
 !tmp/.gitkeep
 *.swp
 .vagrant
+config/*.yml

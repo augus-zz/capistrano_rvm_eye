@@ -1,4 +1,6 @@
 require './boot'
+require 'sinatra'
+require 'sinatra/contrib'
 
 class App < Sinatra::Application
   register Sinatra::Namespace

@@ -31,8 +31,6 @@ require 'json'
 require "yaml"
 require "erb"
 
-require 'sinatra'
-require 'sinatra/contrib'
 require 'sinatra/namespace'
 require 'sinatra/activerecord'
 

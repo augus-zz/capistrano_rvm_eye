@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
-gem 'sinatra'
-gem 'sinatra-contrib'
+gem 'sinatra', :require => false
+gem 'sinatra-contrib', :require => false
 gem 'sinatra-activerecord'
 gem 'mysql2'
 gem 'activerecord'
