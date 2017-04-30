@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 apt-get update
-apt-get install -y ruby2.3 ruby2.3-dev git
+apt-get install -y libmysqlclient20 libmysqlclient-dev ruby2.3 ruby2.3-dev git
 
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
