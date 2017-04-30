@@ -29,7 +29,7 @@ rackup "#{APP_ROOT}/config.ru"
 #
 # The default is "development".
 #
-environment 'production'
+environment ENV['RACK_ENV'] || 'development'
 
 # Daemonize the server into the background. Highly suggest that
 # this be combined with "pidfile" and "stdout_redirect".

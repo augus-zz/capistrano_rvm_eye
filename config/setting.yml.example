@@ -1,4 +1,6 @@
 default: &default
+  ably_api_key: "key"
+  ably_channel: "channel"
 
 # production specific
 #
