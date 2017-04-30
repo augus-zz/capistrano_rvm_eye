@@ -10,8 +10,8 @@ source /etc/profile.d/rvm.sh
 rvm reload
 rvm install 2.4.1
 rvm use 2.4.1
-gem install bundler
-gem install eye
+gem install bundler -N
+gem install eye -N
 cd /vagrant
 bundle install
 
