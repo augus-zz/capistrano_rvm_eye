@@ -4,15 +4,15 @@
 guest_os = "ubuntu/xenial64"
 
 nodes = [
-  { :hostname => 'web1', :ram => 1024, :ip => '192.168.2.10', :role=> 'web' },
-  { :hostname => 'web2', :ram => 1024, :ip => '192.168.2.11' , :role=> 'web' },
-  { :hostname => 'cron', :ram => 1024, :ip => '192.168.2.20' , :role=> 'worker' },
-  { :hostname => 'worker', :ram => 1024, :ip => '192.168.2.30', :role=> 'cron' },
-  { :hostname => 'ably', :ram => 1024, :ip => '192.168.2.40' , :role=> 'ably' },
-  { :hostname => 'mysql', :ram => 1024, :ip => '192.168.2.50', :role=> 'mysql' },
-  { :hostname => 'redis', :ram => 1024, :ip => '192.168.2.60', :role=> 'redis' },
-  { :hostname => 'staging', :ram => 1024, :ip => '192.168.2.70', :role=> 'staging' },
-  { :hostname => 'jumpbox', :ram => 1024, :ip => '192.168.2.80', :role=> 'jumpbox' }
+  { :hostname => 'web1', :ram => 512, :ip => '192.168.2.10', :role=> 'web' },
+  { :hostname => 'web2', :ram => 512, :ip => '192.168.2.11' , :role=> 'web' },
+  { :hostname => 'cron', :ram => 512, :ip => '192.168.2.20' , :role=> 'worker' },
+  { :hostname => 'worker', :ram => 512, :ip => '192.168.2.30', :role=> 'cron' },
+  { :hostname => 'ably', :ram => 512, :ip => '192.168.2.40' , :role=> 'ably' },
+  { :hostname => 'mysql', :ram => 512, :ip => '192.168.2.50', :role=> 'mysql' },
+  { :hostname => 'redis', :ram => 512, :ip => '192.168.2.60', :role=> 'redis' },
+  { :hostname => 'staging', :ram => 512, :ip => '192.168.2.70', :role=> 'staging' },
+  { :hostname => 'jumpbox', :ram => 512, :ip => '192.168.2.80', :role=> 'jumpbox' }
 ]
 
 Vagrant.configure("2") do |config|

@@ -12,7 +12,7 @@ namespace :deploy do
 
   desc 'run DB migrations'
   task :migrate do
-    on roles(:web) do
+    on roles(:all) do
       within release_path do
         execute :rake, 'db:migrate'
       end
@@ -21,7 +21,9 @@ namespace :deploy do
 
   desc "Start or reload eye config"
   task :load_eye do
-    execute "#{fetch(:eye_command)} load #{current_path}/config/deploy/#{fetch(:rack_env)}.eye"
+    on roles(:all) do
+      execute "#{fetch(:eye_command)} load #{current_path}/config/deploy/#{fetch(:rack_env)}.eye"
+    end
   end
 
   %w(start stop restart).each do |name|

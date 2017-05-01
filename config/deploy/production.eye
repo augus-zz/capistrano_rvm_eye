@@ -41,7 +41,7 @@ Eye.application 'KerryInfrasys' do
     check :memory, every: 30, below: 100.megabytes, times: [3, 5]
   end
 
-  process :puma do
+  process :web do
     pid_file "tmp/pids/puma.pid"
     start_command "/bin/bash -l -c 'RACK_ENV=production bundle exec puma -C config/puma.rb'"
     stop_signals [:TERM, 10.seconds]
