@@ -5,3 +5,4 @@ tmp/*
 *.swp
 .vagrant
 config/*.yml
+Vagrantfile
