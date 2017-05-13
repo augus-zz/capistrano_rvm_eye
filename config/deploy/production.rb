@@ -8,9 +8,9 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 server "192.168.2.10", user: "deploy", roles: %w{web}
-server "192.168.2.20", user: "deploy", roles: %w{cron}
-server "192.168.2.30", user: "deploy", roles: %w{worker}
-server "192.168.2.40", user: "deploy", roles: %w{ably}
+#server "192.168.2.20", user: "deploy", roles: %w{cron}
+server "192.168.2.30", user: "deploy", roles: %w{worker cron ably}
+#server "192.168.2.40", user: "deploy", roles: %w{ably}
 
 
 # role-based syntax

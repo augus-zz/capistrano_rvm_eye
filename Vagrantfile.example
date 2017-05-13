@@ -4,15 +4,15 @@
 guest_os = "ubuntu/xenial64"
 
 nodes = [
-  { :hostname => 'web1', :ram => 512, :ip => '192.168.2.10', :role=> 'web' },
-  { :hostname => 'web2', :ram => 512, :ip => '192.168.2.11' , :role=> 'web' },
-  { :hostname => 'cron', :ram => 512, :ip => '192.168.2.20' , :role=> 'worker' },
-  { :hostname => 'worker', :ram => 512, :ip => '192.168.2.30', :role=> 'cron' },
-  { :hostname => 'ably', :ram => 512, :ip => '192.168.2.40' , :role=> 'ably' },
-  { :hostname => 'mysql', :ram => 512, :ip => '192.168.2.50', :role=> 'mysql' },
-  { :hostname => 'redis', :ram => 512, :ip => '192.168.2.60', :role=> 'redis' },
-  { :hostname => 'staging', :ram => 512, :ip => '192.168.2.70', :role=> 'staging' },
-  { :hostname => 'jumpbox', :ram => 512, :ip => '192.168.2.80', :role=> 'jumpbox' }
+  { :hostname => 'web1', :ram => 512, :ip => '192.168.2.10', :roles => ['web'] },
+  { :hostname => 'web2', :ram => 512, :ip => '192.168.2.11' , :roles => ['web'] },
+  { :hostname => 'cron', :ram => 512, :ip => '192.168.2.20' , :roles => ['worker'] },
+  { :hostname => 'worker', :ram => 512, :ip => '192.168.2.30', :roles => ['cron'] },
+  { :hostname => 'ably', :ram => 512, :ip => '192.168.2.40' , :roles => ['ably'] },
+  { :hostname => 'mysql', :ram => 512, :ip => '192.168.2.50', :roles => ['mysql'] },
+  { :hostname => 'redis', :ram => 512, :ip => '192.168.2.60', :roles => ['redis'] },
+  { :hostname => 'staging', :ram => 512, :ip => '192.168.2.70', :roles => ['staging'] },
+  { :hostname => 'jumpbox', :ram => 512, :ip => '192.168.2.80', :roles => ['jumpbox'] }
 ]
 
 Vagrant.configure("2") do |config|
@@ -33,9 +33,11 @@ Vagrant.configure("2") do |config|
 
       nodeconfig.vm.provision "shell", privileged: true, path: "scripts/bootstrap.sh"
 
-      nodeconfig.vm.provision :shell, privileged: true, path: "scripts/#{node[:role]}.sh"
-      if ["jumpbox"].include? node[:role]
-        nodeconfig.vm.synced_folder ".", "/opt/capistrano_rvm_eye", owner: "ubuntu"
+      node[:roles].each do |role|
+        nodeconfig.vm.provision :shell, privileged: true, path: "scripts/#{role}.sh"
+        if ["jumpbox"].include? role
+          nodeconfig.vm.synced_folder ".", "/opt/capistrano_rvm_eye", owner: "ubuntu"
+        end
       end
     end
   end
